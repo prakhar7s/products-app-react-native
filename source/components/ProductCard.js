@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useCartContext } from "../shop/CartProvider";
 import { COLORS, PLATFORM, SIZES } from "../constants/themes";
 import Row from "./UI/Row";
 import Button from "./UI/Button";
 import Rating from "./UI/Rating";
 import IconFavourite from "./UI/IconFavourite";
+import { useNavigation } from "@react-navigation/native";
+import { NAVIGATION } from "../constants/navigation";
 
 const ProductCard = (props) => {
   const { item } = props;
 
   // MARK: FUNCTION CONTEXT
   const { addItemToCart } = useCartContext();
+  const navigation = useNavigation();
   const [itemQuantity, setItemQuantity] = useState(1);
   function increment() {
     return setItemQuantity(itemQuantity + 1);
@@ -27,8 +30,12 @@ const ProductCard = (props) => {
     setItemQuantity(1);
   }
 
+  const openDetailsPage = () => {
+    navigation.navigate(NAVIGATION.PRODUCT_DETAILS);
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={openDetailsPage} style={styles.container}>
       <Row style={[styles.contentContainer, props.bgColor]}>
         <View style={styles.COL_IMAGE}>
           {item.isFavourite && <IconFavourite style={styles.iconFavourite} />}
@@ -69,7 +76,7 @@ const ProductCard = (props) => {
           </Row>
         </View>
       </Row>
-    </View>
+    </TouchableOpacity>
   );
 };
 
