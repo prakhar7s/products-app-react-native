@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import MainNavigation from "./source/navigation/MainNavigation";
 import { CartProvider } from "./source/shop/CartProvider";
+
 import {
   useFonts,
   Poppins_400Regular,
@@ -12,6 +12,9 @@ import {
   Poppins_900Black,
 } from "@expo-google-fonts/poppins";
 import AppLoading from "expo-app-loading";
+import AppStack from "./source/navigation/app-stack";
+import "react-native-gesture-handler";
+import { COLORS } from "./source/constants/colors";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -29,14 +32,7 @@ export default function App() {
 
   return (
     <CartProvider>
-      <View
-        style={{
-          height: 40,
-        }}
-      >
-        <StatusBar />
-      </View>
-      <MainNavigation />
+      <AppStack />
     </CartProvider>
   );
 }

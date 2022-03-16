@@ -1,12 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Tab = createBottomTabNavigator();
 
 import ProductsScreen, {
   productsScreenOptions,
-} from '../screens/ProductsScreen';
-import CartScreen, { cartScreenOptions } from '../screens/CartScreen';
+} from "../screens/ProductsScreen";
+import CartScreen, { cartScreenOptions } from "../screens/CartScreen";
+import { ProductDetails } from "../screens/product-details/product-details";
 
 const MainNavigation = (props) => {
   return (
@@ -14,10 +14,10 @@ const MainNavigation = (props) => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
+          tabBarActiveTintColor: "tomato",
+          tabBarInactiveTintColor: "gray",
           tabBarStyle: {
-            position: 'absolute',
+            position: "absolute",
             borderTopRightRadius: 30,
             borderTopLeftRadius: 30,
           },
@@ -25,7 +25,7 @@ const MainNavigation = (props) => {
       >
         <Tab.Screen
           name="Menu"
-          component={ProductsScreen}
+          component={ProductDetails}
           options={productsScreenOptions}
         />
         <Tab.Screen
