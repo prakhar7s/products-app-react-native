@@ -21,6 +21,7 @@ export const COLORS = {
   gray: "#252628",
   gold: "#CD9A4C",
   lightGray: "#757575",
+  productBg: "#3A3B3D",
 };
 
 export const CLOTH_COLORS = {

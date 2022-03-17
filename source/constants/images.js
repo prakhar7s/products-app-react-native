@@ -13,4 +13,8 @@ export const IMAGES = {
   BANNER_THREE: require("../assets/banner-three.jpg"),
 
   SILK: require("../assets/silk.png"),
+
+  TSHIRT_OUTLINE_LEFT: require("../assets/tshirt-outline-left.png"),
+  TSHIRT_OUTLINE_RIGHT: require("../assets/tshirt-outline-right.png"),
+  TSHIRT_OUTLINE_FULL: require("../assets/tshirt-outline-full.png"),
 };
