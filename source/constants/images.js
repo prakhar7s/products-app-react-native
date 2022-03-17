@@ -11,4 +11,6 @@ export const IMAGES = {
   BANNER_ONE: require("../assets/banner-one.jpg"),
   BANNER_TWO: require("../assets/banner-two.jpg"),
   BANNER_THREE: require("../assets/banner-three.jpg"),
+
+  SILK: require("../assets/silk.png"),
 };

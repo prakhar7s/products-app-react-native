@@ -20,4 +20,12 @@ export const COLORS = {
   success: "#1FAE07",
   gray: "#252628",
   gold: "#CD9A4C",
+  lightGray: "#757575",
+};
+
+export const CLOTH_COLORS = {
+  rose: "#822626",
+  green: "#268266",
+  yellow: "#7A8226",
+  blue: "#264582",
 };
