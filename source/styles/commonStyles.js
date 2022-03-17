@@ -18,6 +18,13 @@ export const commonStyles = StyleSheet.create({
   },
   justifyBetween: { justifyContent: "space-between" },
   justifyAround: { justifyContent: "space-around" },
+  justifyEnd: { justifyContent: "flex-end" },
+
+  justifyStart: { justifyContent: "flex-start" },
+
+  alignItemsStart: {
+    alignItems: "flex-start",
+  },
   padd5: {
     padding: dynamicSize(5),
   },
@@ -51,8 +58,14 @@ export const commonStyles = StyleSheet.create({
   margV10: {
     marginVertical: dynamicSize(10),
   },
+  margH7: {
+    marginHorizontal: dynamicSize(7),
+  },
   margH10: {
     marginHorizontal: dynamicSize(10),
+  },
+  margH16: {
+    marginHorizontal: dynamicSize(16),
   },
   borderBottom: {
     borderBottomWidth: 1,

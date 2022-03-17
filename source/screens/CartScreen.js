@@ -131,11 +131,11 @@ const styles = StyleSheet.create({
   grandTotalContainer: {
     backgroundColor: "#333",
     width: SIZES.WIDTH,
-    height: PLATFORM.isAndroid ? "18%" : "19%",
+    height: PLATFORM.isAndroid ? "12%" : "19%",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingBottom: PLATFORM.isAndroid ? SIZES.HEIGHT / 15 : SIZES.HEIGHT / 12,
+    // paddingBottom: PLATFORM.isAndroid ? SIZES.HEIGHT / 15 : SIZES.HEIGHT / 12,
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     position: "absolute",

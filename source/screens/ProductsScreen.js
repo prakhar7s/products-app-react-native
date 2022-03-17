@@ -9,6 +9,8 @@ import { IMAGES } from "../constants/images";
 const ProductsScreen = (props) => {
   return (
     <View style={styles.container}>
+      <View style={styles.paddingSafeArea} />
+
       <ScrollView
         style={styles.scrollContainer}
         showsVerticalScrollIndicator={false}

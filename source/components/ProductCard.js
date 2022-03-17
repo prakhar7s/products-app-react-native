@@ -31,7 +31,9 @@ const ProductCard = (props) => {
   }
 
   const openDetailsPage = () => {
-    navigation.navigate(NAVIGATION.PRODUCT_DETAILS);
+    navigation.navigate(NAVIGATION.PRODUCT_DETAILS, {
+      item: item,
+    });
   };
 
   return (
