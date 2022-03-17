@@ -1,3 +1,4 @@
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   View,
@@ -17,6 +18,7 @@ import { IMAGES } from "../../constants/images";
 import { commonStyles } from "../../styles/commonStyles";
 import { dynamicSize, getFontSize } from "../../utils/dynamicSize";
 import { getSizes } from "../../utils/getSizes";
+import { NAVIGATION } from "../../constants/navigation";
 
 const SectionOne = ({ setSection }) => {
   const { height, width } = getSizes();
@@ -38,12 +40,15 @@ const SectionOne = ({ setSection }) => {
           styles.productDetailView,
         ]}
       >
-        <View style={[styles.leftSide, commonStyles.justifyAround]}>
+        <TouchableOpacity
+          onPress={() => setSection(2)}
+          style={[styles.leftSide, commonStyles.justifyAround]}
+        >
           <Text style={styles.prodNameLight}>
             BLACK <Text style={styles.prodNameBold}>TWO-PIECE</Text>
           </Text>
           <Text style={styles.prodPrice}>INR 30,000</Text>
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setSection(1)}
           style={[commonStyles.flexRow, styles.rightSide]}
@@ -93,8 +98,7 @@ const SectionTwo = ({ setSection }) => {
           </Text>
         </View>
 
-        <View style={[commonStyles.flexRow, commonStyles.justifyAround]}>
-          <CustomButton title="DETAILS" textColor={COLORS.gold} isBackground />
+        <View style={[commonStyles.flexRow, commonStyles.justifyEnd]}>
           <CustomButton
             onPressHandler={() => setSection(2)}
             title="CUSTOMIZE"
@@ -109,6 +113,7 @@ const SectionTwo = ({ setSection }) => {
 
 const SectionThree = () => {
   const { height, width } = getSizes();
+  const navigation = useNavigation();
 
   return (
     <View style={[commonStyles.flexCol, styles.sectionThree]}>
@@ -275,15 +280,16 @@ const SectionThree = () => {
             },
           ]}
         >
-          <View
+          <TouchableOpacity
             style={[
               commonStyles.flexRow,
               styles.rightSide,
               { flex: 0.2, height: 44 },
             ]}
+            onPress={() => navigation.navigate(NAVIGATION.CUSTOMIZATION_SCREEN)}
           >
             <SVGICon name="SHOP" width={22} height={22} fill={COLORS.white} />
-          </View>
+          </TouchableOpacity>
           <View style={{ flex: 0.4 }}>
             <CustomButton title="CANCEL" textColor={COLORS.gold} isBackground />
           </View>

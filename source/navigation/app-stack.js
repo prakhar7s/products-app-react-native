@@ -7,6 +7,8 @@ import { NAVIGATION } from "../constants/navigation";
 import Home from "../screens/home/home";
 import { NavigationContainer } from "@react-navigation/native";
 import { ProductDetails } from "../screens/product-details/product-details";
+import { AllProducts } from "../screens/all-products/all-products";
+import { CustomizationScreen } from "../screens/customization-screen/customization-screen";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +17,7 @@ class AppStack extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={NAVIGATION.HOME_SCREEN}
+          initialRouteName={NAVIGATION.ALL_PRODUCTS}
           screenOptions={{
             headerShown: false,
             ...TransitionPresets.SlideFromRightIOS,
@@ -29,6 +31,15 @@ class AppStack extends React.Component {
           <Stack.Screen
             name={NAVIGATION.PRODUCT_DETAILS}
             component={ProductDetails}
+          />
+
+          <Stack.Screen
+            name={NAVIGATION.ALL_PRODUCTS}
+            component={AllProducts}
+          />
+          <Stack.Screen
+            name={NAVIGATION.CUSTOMIZATION_SCREEN}
+            component={CustomizationScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
