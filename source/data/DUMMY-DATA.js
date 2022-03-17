@@ -62,3 +62,60 @@ export const DUMMY_DATA = [
     isFavourite: false,
   },
 ];
+
+export const PRODUCTS_LIST = [
+  {
+    id: 1,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+  {
+    id: 2,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+  {
+    id: 3,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.BLUE_TSHIRT,
+  },
+  {
+    id: 4,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+  {
+    id: 5,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.BLUE_TSHIRT,
+  },
+  {
+    id: 6,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+  {
+    id: 7,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.RED_HALF_SLEEVE,
+  },
+  {
+    id: 8,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+  {
+    id: 9,
+    name: "BLACK TWO-PIECE",
+    price: "INR 30,000",
+    image: IMAGES.FULL_CLOTH,
+  },
+];
