@@ -9,6 +9,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ProductDetails } from "../screens/product-details/product-details";
 import { AllProducts } from "../screens/all-products/all-products";
 import { CustomizationScreen } from "../screens/customization-screen/customization-screen";
+import SplashScreen from "../screens/splash-screen/splash-screen";
+import Auth from "../screens/auth-screen/auth-screen";
+import OTPScreen from "../screens/otp-screen/otp-screen";
 
 const Stack = createStackNavigator();
 
@@ -17,7 +20,7 @@ class AppStack extends React.Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName={NAVIGATION.ALL_PRODUCTS}
+          initialRouteName={NAVIGATION.SPLASH_SCREEN}
           screenOptions={{
             headerShown: false,
             ...TransitionPresets.SlideFromRightIOS,
@@ -28,6 +31,14 @@ class AppStack extends React.Component {
           }}
         >
           <Stack.Screen name={NAVIGATION.HOME_SCREEN} component={Home} />
+          <Stack.Screen name={NAVIGATION.AUTH_SCREEN} component={Auth} />
+          <Stack.Screen name={NAVIGATION.OTP_SCREEN} component={OTPScreen} />
+
+          <Stack.Screen
+            name={NAVIGATION.SPLASH_SCREEN}
+            component={SplashScreen}
+          />
+
           <Stack.Screen
             name={NAVIGATION.PRODUCT_DETAILS}
             component={ProductDetails}
