@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
   productDetails: {
     backgroundColor: COLORS.black,
     flex: 1,
-    paddingTop: 40,
   },
 
   prodView: {

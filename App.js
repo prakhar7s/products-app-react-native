@@ -15,7 +15,10 @@ import AppLoading from "expo-app-loading";
 import AppStack from "./source/navigation/app-stack";
 import "react-native-gesture-handler";
 import { COLORS } from "./source/constants/colors";
+import Clipboard from "expo-clipboard";
+import { ignoreWarningLogs } from "./source/utils/ignoreWarningLogs";
 
+ignoreWarningLogs();
 export default function App() {
   let [fontsLoaded] = useFonts({
     POPPINS_400: Poppins_400Regular,
