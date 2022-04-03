@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { IMAGES } from "../../constants/images";
 import { COLORS } from "../../constants/colors";
 import { NAVIGATION } from "../../constants/navigation";
 import { dynamicSize, getFontSize } from "../../utils/dynamicSize";
-import { TextInput } from "react-native-paper";
-import CustomInput from "../../components/custom-input/custom-input";
-import CustomButton from "../../components/custom-button/custom-button";
 import OTPInputView from "@twotalltotems/react-native-otp-input";
 import AppHeader from "../../components/app-header/app-header";
 import { commonStyles } from "../../styles/commonStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  getAuth,
+  PhoneAuthProvider,
+  signInWithCredential,
+} from "firebase/auth";
+
+// Firebase references
+const auth = getAuth();
 
 const OTPScreen = (props) => {
   const { navigation, route } = props;
-  const [code, setCode] = useState("");
+  const { number, verificationId } = props.route?.params;
 
   return (
     <>
@@ -25,8 +29,16 @@ const OTPScreen = (props) => {
         <Text style={[styles.text]}>
           Hang on! We will automatically detect an sms sent to your phone number
         </Text>
-        <Text style={[styles.text, styles.boldText]}>
-          {/* {route?.params?.number} */}
+        <Text
+          style={[
+            styles.text,
+            styles.boldText,
+            {
+              color: COLORS.gold,
+            },
+          ]}
+        >
+          {number}
         </Text>
         <Text style={[styles.text]}>Enter OTP Manually</Text>
         <View style={commonStyles.margV10} />
@@ -38,8 +50,21 @@ const OTPScreen = (props) => {
           autoFocusOnLoad
           codeInputFieldStyle={styles.underlineStyleBase}
           codeInputHighlightStyle={styles.underlineStyleHighLighted}
-          onCodeFilled={(code) => {
-            navigation.navigate(NAVIGATION.ALL_PRODUCTS);
+          onCodeFilled={async (verificationCode) => {
+            try {
+              const credential = PhoneAuthProvider.credential(
+                verificationId,
+                verificationCode
+              );
+              await signInWithCredential(auth, credential);
+
+              navigation.reset({
+                index: 0,
+                routes: [{ name: NAVIGATION.PRODUCT_DETAILS }],
+              });
+            } catch (err) {
+              console.log(err);
+            }
           }}
         />
 

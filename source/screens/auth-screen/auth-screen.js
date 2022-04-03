@@ -1,30 +1,56 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { IMAGES } from "../../constants/images";
+import React, { useState, useRef } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { COLORS } from "../../constants/colors";
 import { NAVIGATION } from "../../constants/navigation";
 import { dynamicSize, getFontSize } from "../../utils/dynamicSize";
 import CustomInput from "../../components/custom-input/custom-input";
 import CustomButton from "../../components/custom-button/custom-button";
 import { commonStyles } from "../../styles/commonStyles";
+import firebase, { firebaseConfig } from "../../firebase/firebase";
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import { initializeApp, getApp } from "firebase/app";
+import { getAuth, PhoneAuthProvider } from "firebase/auth";
+
+// Firebase references
+const app = getApp();
+const auth = getAuth();
 
 const Auth = (props) => {
   const { navigation } = props;
   const [code, setCode] = useState("+91");
   const [number, setNumber] = useState("");
+  const recaptchaVerifier = useRef(null);
 
-  const redirectToOtp = () => {
+  const redirectToOtp = (verificationId) => {
     navigation.navigate(NAVIGATION.OTP_SCREEN, {
       number: `${code}-${number}`,
+      verificationId,
     });
+  };
+
+  const sendOtp = async () => {
+    console.log(code + number);
+    try {
+      const phoneProvider = new PhoneAuthProvider(auth);
+      const verificationId = await phoneProvider.verifyPhoneNumber(
+        code + number,
+        recaptchaVerifier.current
+      );
+
+      redirectToOtp(verificationId);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <View style={styles.container}>
+      <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig={app.options}
+        attemptInvisibleVerification={false}
+      />
       <View style={styles.upperView}>
-        <View style={[commonStyles.margV10, commonStyles.paddV10]} />
-        <View style={[commonStyles.margV10, commonStyles.paddV10]} />
-        <View style={[commonStyles.margV10, commonStyles.paddV10]} />
         <View style={[commonStyles.margV10, commonStyles.paddV10]} />
 
         <View style={styles.middleView}>
@@ -62,7 +88,7 @@ const Auth = (props) => {
               isVerticalPadding
               vPadding={12}
               textColor={COLORS.white}
-              onPressHandler={redirectToOtp}
+              onPressHandler={sendOtp}
             />
           </View>
         </View>
