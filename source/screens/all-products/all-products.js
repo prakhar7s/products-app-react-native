@@ -26,9 +26,20 @@ const numberOfCols = 2;
 const AllProducts = (props) => {
   const { height, width } = getSizes();
   const { navigation } = props;
+
+  const shopHandler = () => {
+    navigation.navigate(NAVIGATION.MEASUREMENTS);
+  };
   return (
     <View style={styles.productDetails}>
-      <AppHeader isHomeHeader title="DAPPER" isSearch isShop isBlack />
+      <AppHeader
+        isHomeHeader
+        title="DAPPER"
+        isSearch
+        isShop
+        isBlack
+        shopHandler={shopHandler}
+      />
       <FlatList
         key={numberOfCols}
         numColumns={numberOfCols}

@@ -304,7 +304,7 @@ const ProductDetails = (props) => {
   const { height, width } = getSizes();
   const [section, setSection] = useState(0);
 
-  const { item } = props?.route?.params;
+  const { item } = props?.route?.params || {};
 
   return (
     <View style={styles.productDetails}>

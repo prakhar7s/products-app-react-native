@@ -6,9 +6,15 @@ import { commonStyles } from "../../styles/commonStyles";
 import { dynamicSize, getFontSize } from "../../utils/dynamicSize";
 import CustomButton from "../custom-button/custom-button";
 import SVGICon from "../svg-icon/svg-icon";
+import { app } from "../../firebase/firebase";
 
+import { getAuth } from "firebase/auth";
+import { NAVIGATION } from "../../constants/navigation";
+
+// Firebase references
+const auth = getAuth();
 const AppHeader = (props) => {
-  const { title, isHomeHeader, isMore, isSearch, isShop } = props;
+  const { title, isHomeHeader, isMore, isSearch, isShop, shopHandler } = props;
   const navigation = useNavigation();
 
   const goBack = () => navigation.goBack();
@@ -48,6 +54,7 @@ const AppHeader = (props) => {
           {title}
         </Text>
       </View>
+
       <View style={[commonStyles.flexRow, commonStyles.paddH10]}>
         {isSearch && (
           <TouchableOpacity
@@ -68,15 +75,27 @@ const AppHeader = (props) => {
               commonStyles.flexCol,
               { width: dynamicSize(45) },
             ]}
+            onPress={shopHandler}
           >
-            <SVGICon name="SHOP" width={20} height={20} fill={COLORS.white} />
+            <SVGICon
+              name="MEASUREMENTS"
+              width={20}
+              height={20}
+              fill={COLORS.white}
+            />
           </TouchableOpacity>
         )}
 
-        {isMore && (
-          <TouchableOpacity style={commonStyles.margH5}>
+        {isHomeHeader && auth.currentUser && (
+          <TouchableOpacity
+            onPress={() => {
+              auth.signOut();
+              navigation.navigate(NAVIGATION.AUTH_SCREEN);
+            }}
+            style={commonStyles.margH5}
+          >
             <SVGICon
-              name="MORE_OPTIONS"
+              name="LOGOUT"
               strokeWidth={1}
               width={20}
               height={20}

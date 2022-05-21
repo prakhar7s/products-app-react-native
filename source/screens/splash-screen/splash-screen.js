@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { COLORS } from "../../constants/colors";
 import { NAVIGATION } from "../../constants/navigation";
-import { dynamicSize, getFontSize } from "../../utils/dynamicSize";
 import StatusBar from "./../../utils/StatusBar";
+import { app } from "../../firebase/firebase";
+import { getAuth } from "firebase/auth";
+
+// Firebase references
+const auth = getAuth();
 
 const SplashScreen = (props) => {
   const { navigation } = props;
 
   const redirect = () => {
+    const user = auth?.currentUser;
+
     props.navigation.reset({
       index: 0,
-      routes: [{ name: NAVIGATION.AUTH_SCREEN }],
+      routes: [
+        { name: user ? NAVIGATION.ALL_PRODUCTS : NAVIGATION.AUTH_SCREEN },
+      ],
     });
   };
 

@@ -8,7 +8,7 @@ import CustomButton from "../../components/custom-button/custom-button";
 import { commonStyles } from "../../styles/commonStyles";
 import firebase, { firebaseConfig } from "../../firebase/firebase";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
-import { initializeApp, getApp } from "firebase/app";
+import { getApp } from "firebase/app";
 import { getAuth, PhoneAuthProvider } from "firebase/auth";
 
 // Firebase references

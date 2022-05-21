@@ -18,7 +18,7 @@ const auth = getAuth();
 
 const OTPScreen = (props) => {
   const { navigation, route } = props;
-  const { number, verificationId } = props.route?.params;
+  const { number, verificationId } = props.route?.params || {};
 
   return (
     <>
@@ -60,7 +60,7 @@ const OTPScreen = (props) => {
 
               navigation.reset({
                 index: 0,
-                routes: [{ name: NAVIGATION.PRODUCT_DETAILS }],
+                routes: [{ name: NAVIGATION.ALL_PRODUCTS }],
               });
             } catch (err) {
               console.log(err);

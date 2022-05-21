@@ -12,6 +12,7 @@ import { CustomizationScreen } from "../screens/customization-screen/customizati
 import SplashScreen from "../screens/splash-screen/splash-screen";
 import Auth from "../screens/auth-screen/auth-screen";
 import OTPScreen from "../screens/otp-screen/otp-screen";
+import Measurements from "../screens/measurements/measurements";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,10 @@ class AppStack extends React.Component {
           <Stack.Screen name={NAVIGATION.HOME_SCREEN} component={Home} />
           <Stack.Screen name={NAVIGATION.AUTH_SCREEN} component={Auth} />
           <Stack.Screen name={NAVIGATION.OTP_SCREEN} component={OTPScreen} />
+          <Stack.Screen
+            name={NAVIGATION.MEASUREMENTS}
+            component={Measurements}
+          />
 
           <Stack.Screen
             name={NAVIGATION.SPLASH_SCREEN}
